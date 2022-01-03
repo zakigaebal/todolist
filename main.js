@@ -63,12 +63,4 @@ document.addEventListener("DOMContentLoaded", () => {
       addTodo();
     }
   });
-
-  document.getElementById("va2").innerHTML =
-    today.getHours() +
-    "시 " +
-    today.getMinutes() +
-    "분 " +
-    today.getSeconds() +
-    "초 ";
 });
