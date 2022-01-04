@@ -1,3 +1,5 @@
+// 데이터 저장
+
 document.addEventListener("DOMContentLoaded", () => {
   const addTodo = () => {
     if (input.value !== "") {
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const today = new Date();
 
-      const p = document.createElement("p");
+      const p = document.createElement("h6");
       p.textContent = today.getHours() + ":" + today.getMinutes();
       input.value = "";
       div.appendChild(p);
@@ -32,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteButton.textContent = "제거하기";
       deleteButton.addEventListener("click", () => {
         div.parentNode.removeChild(div);
+        localStorage.clear();
+        // 저장된 녀석을 모두 제거
       });
       div.appendChild(deleteButton);
     }
@@ -50,7 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(form);
 
   const input = document.createElement("input");
+  const key = localStorage.getItem("키");
+  if (key !== null) {
+    input.value = key;
+  }
   input.addEventListener("keyup", (event) => {
+    input.addEventListener("keyup", () => {
+      // 입력 양식 내부의 값을 저장
+      localStorage.setItem("키", input.value);
+    });
     if (event.keyCode === 13) {
       addTodo();
     }
@@ -66,4 +78,42 @@ document.addEventListener("DOMContentLoaded", () => {
       addTodo();
     }
   });
+  const save = (data) => {
+    localStorage.setItem("애플", JSON.stringify(data));
+  };
+
+  // 요소 가져오기
+  const deleteButton = document.querySelector("button");
+  // 초기 실행
+  const data = load();
+  input.value = data.message;
+  // 이벤트 연결
+  deleteButton.addEventListener("click", () => {
+    // 데이터를 모두 지우고!
+    data.message = "";
+    save(data);
+    // 입력양식 초기화!
+    input.value = "";
+  });
+  input.addEventListener("keyup", () => {
+    data.message = input.value;
+    save(data);
+  });
 });
+
+// json
+// 키는 문자열만!
+// 문자열은 반드시 큰따옴표!
+// 이외에도 데이터는 숫자, 문자열, 불만 저장할 수 있다.
+// 컨테이너 데이터는 객체, 배열만 사용할 수 있다 등이 있습니다.
+// 함수를 저장하거나 할 수는 없습니다.
+const load = () => {
+  const data = localStorage.getItem("애플리케이션");
+  if (data !== null) {
+    return JSON.parse(data);
+  } else {
+    return {
+      message: "",
+    };
+  }
+};
