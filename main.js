@@ -24,13 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const today = new Date();
 
       const p = document.createElement("p");
-      p.textContent =
-        today.getHours() +
-        "시" +
-        today.getMinutes() +
-        "분" +
-        today.getSeconds() +
-        "초";
+      p.textContent = today.getHours() + ":" + today.getMinutes();
       input.value = "";
       div.appendChild(p);
 
