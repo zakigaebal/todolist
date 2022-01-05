@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.id = "checkbox";
+
       checkbox.addEventListener("change", () => {
         if (checkbox.checked) {
           div.style.textDecoration = "line-through";
