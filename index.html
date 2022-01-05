@@ -2,11 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js"></script>
+    <title>나의 할일</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="myTodo">
+        <div class="inputvalue">
+          <h1 id="testID">할 일</h1>
+          <input
+            class="inputVal"
+            type="text"
+            placeholder="할 일을 적어주세요!"
+            value=""
+          />
+          <button class="btn">추가하기</button>
+        </div>
+
+        <div id="line" class="todoLists"></div>
+        <button class="clearTask" onclick="clearTask()">모두지우기</button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>

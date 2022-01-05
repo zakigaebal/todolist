@@ -44,3 +44,7 @@ form {
   height: 25px;
   margin-right: 5px;
 }
+
+.deleteTask {
+  cursor: pointer;
+}
