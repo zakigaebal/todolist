@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>나의 할일</title>
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    />
-    <!--부트스트랩 링크사용 style -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>My to-do-list</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="index.css" />
   </head>
+
   <body>
     <nav class="header">
       <span class="js-weather"></span>
@@ -21,38 +14,26 @@
       </span>
     </nav>
 
-    <h2>대한민국 서울의 날씨</h2>
-    <hr />
+    <script>
+      const title = document.createElement("div");
+      document.body.appendChild(title);
+      title.id = "testID";
 
-    <div class="col-5">
-      <img id="icon" />
-    </div>
+      const h1 = document.createElement("h1");
+      h1.textContent = "할 일 목록";
 
-    <h1 class="display-1" id="temp"></h1>
-    <strong id="weather"></strong><br />
+      title.appendChild(h1);
+    </script>
 
-    <!-- // 투두리스트 -->
-    <div class="container">
-      <div class="myTodo">
-        <div class="inputvalue">
-          <h1 id="testID">할 일</h1>
-          <input
-            class="inputVal"
-            type="text"
-            placeholder="할 일을 적어주세요!"
-            value=""
-          />
-          <button class="btn">추가하기...</button>
-        </div>
+    <form class="js-toDoForm">
+      <input type="text" placeholder="할일을 작성해주세요." />
+    </form>
+    <ul class="js-toDoList"></ul>
 
-        <div id="line" class="todoLists"></div>
-        <button class="clearTask" onclick="clearTask()">모두지우기</button>
-      </div>
-    </div>
-    <script src="main.js"></script>
-    <script src="weather.js"></script>
     <script src="clock.js"></script>
+
+    <script src="todo.js"></script>
+
+    <script src="weather.js"></script>
   </body>
 </html>
-
-<!-- api.openweathermap.org/data/2.5/weather?q={city name}&units=metric&lang=kr&appid={API key} -->
